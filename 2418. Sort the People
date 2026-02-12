@@ -1,0 +1,23 @@
+char** sortPeople(char** names,int n,int* heights,int hSize,int* returnSize){
+    char** ans=(char**)malloc(n*sizeof(char*));
+
+    for(int i=0;i<n;i++)
+        ans[i]=names[i];
+
+    for(int i=0;i<n-1;i++){
+        for(int j=i+1;j<n;j++){
+            if(heights[i]<heights[j]){
+                int t=heights[i];
+                heights[i]=heights[j];
+                heights[j]=t;
+
+                char* s=ans[i];
+                ans[i]=ans[j];
+                ans[j]=s;
+            }
+        }
+    }
+
+    *returnSize=n;
+    return ans;
+}
